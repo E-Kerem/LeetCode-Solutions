@@ -1,5 +1,5 @@
-# Sort Array by Increasing Frequency
+# Minimum Number of Vertices to Reach All Nodes
 
-**Difficulty**: Easy
+**Difficulty**: Medium
 
 **Description**: Description not available.
