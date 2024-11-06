@@ -1,15 +1,14 @@
-def countDistinctIntegers(nums):
-    def reverse_number(n):
-        return int(str(n)[::-1])
+def maxSubsetSize(nums):
+    # Sort the input list
+    nums.sort()
     
-    distinct_numbers = set(nums)
+    max_size = 0
+    current_sum = 0
     
     for num in nums:
-        reversed_num = reverse_number(num)
-        distinct_numbers.add(reversed_num)
-    
-    return len(distinct_numbers)
-
-# Example usage:
-nums = [123, 456, 789]
-print(countDistinctIntegers(nums))  # Output: 6
+        # Check if adding the current number doesn't exceed the limit of 1
+        if current_sum + num <= 1:
+            current_sum += num
+            max_size += 1
+            
+    return max_size
