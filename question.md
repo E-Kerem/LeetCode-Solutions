@@ -1,4 +1,4 @@
-# Perfect Squares
+# All Possible Full Binary Trees
 
 **Difficulty**: Medium
 
