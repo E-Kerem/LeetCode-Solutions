@@ -1,28 +1,41 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Solution {
-    public String interpret(String command) {
-        // Initialize a StringBuilder to build the result
-        StringBuilder result = new StringBuilder();
+
+    public List<String> alertNames(String[] keyName, String[] keyTime) {
+        Map<String, List<Integer>> timeMap = new HashMap<>();
         
-        // Iterate over each character in the command string
-        for (int i = 0; i < command.length(); i++) {
-            // Check for 'G'
-            if (command.charAt(i) == 'G') {
-                result.append('G');
-            }
-            // Check for '(' - indicates the start of a possible "al" or an empty string
-            else if (command.charAt(i) == '(') {
-                // Check the next character
-                if (command.charAt(i + 1) == ')') {
-                    result.append('o'); // Empty parentheses corresponds to 'o'
-                    i++; // Move past ')'
-                } else { 
-                    // Otherwise, it must be "al"
-                    result.append("al");
-                    i += 3; // Move past "al)"
+        // Convert keyTime to a map with the associated keyName
+        for (int i = 0; i < keyName.length; i++) {
+            String name = keyName[i];
+            String[] splitTime = keyTime[i].split(":");
+            int minutes = Integer.parseInt(splitTime[0]) * 60 + Integer.parseInt(splitTime[1]);
+            timeMap.computeIfAbsent(name, k -> new ArrayList<>()).add(minutes);
+        }
+
+        List<String> alertNames = new ArrayList<>();
+        
+        // Check each user's times
+        for (Map.Entry<String, List<Integer>> entry : timeMap.entrySet()) {
+            String name = entry.getKey();
+            List<Integer> times = entry.getValue();
+            // Sort the list of times to facilitate the checking
+            times.sort(Integer::compareTo);
+            
+            // Check for alerts within one hour
+            for (int i = 0; i < times.size() - 2; i++) {
+                if (times.get(i + 2) - times.get(i) <= 60) {
+                    alertNames.add(name);
+                    break; // No need to check further for this name
                 }
             }
         }
-        // Convert StringBuilder to string and return final result
-        return result.toString();
+        
+        // Sort the names before returning
+        alertNames.sort(String::compareTo);
+        return alertNames;
     }
 }
