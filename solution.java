@@ -1,26 +1,28 @@
-public class PerfectSquares {
-    public int numSquares(int n) {
-        // Create a DP array with a size of n + 1
-        int[] dp = new int[n + 1];
-        // Initialize the DP array
-        for (int i = 1; i <= n; i++) {
-            dp[i] = Integer.MAX_VALUE; // max starting value
-        }
+public class Solution {
+    public String interpret(String command) {
+        // Initialize a StringBuilder to build the result
+        StringBuilder result = new StringBuilder();
         
-        // Populate the DP array
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j * j <= i; j++) {
-                dp[i] = Math.min(dp[i], dp[i - j * j] + 1);
+        // Iterate over each character in the command string
+        for (int i = 0; i < command.length(); i++) {
+            // Check for 'G'
+            if (command.charAt(i) == 'G') {
+                result.append('G');
+            }
+            // Check for '(' - indicates the start of a possible "al" or an empty string
+            else if (command.charAt(i) == '(') {
+                // Check the next character
+                if (command.charAt(i + 1) == ')') {
+                    result.append('o'); // Empty parentheses corresponds to 'o'
+                    i++; // Move past ')'
+                } else { 
+                    // Otherwise, it must be "al"
+                    result.append("al");
+                    i += 3; // Move past "al)"
+                }
             }
         }
-        
-        // Return the result for n
-        return dp[n];
-    }
-
-    public static void main(String[] args) {
-        PerfectSquares ps = new PerfectSquares();
-        int n = 12; // Example input
-        System.out.println(ps.numSquares(n)); // Output should be 3 (4 + 4 + 4)
+        // Convert StringBuilder to string and return final result
+        return result.toString();
     }
 }
