@@ -1,4 +1,4 @@
-# Find the Maximum Number of Elements in Subset
+# Perfect Squares
 
 **Difficulty**: Medium
 
