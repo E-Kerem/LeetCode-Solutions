@@ -1,8 +1,11 @@
 1. **Time Complexity**:
-   - The time complexity of this solution is **O(n)**, where `n` is the length of the input string `command`. This is because we make a single pass through the string, processing each character in constant time.
+   - Counting frequencies takes O(n), where n is the length of the input array `nums`.
+   - Sorting the frequency array takes O(k log k), where k is the number of unique elements in `nums`.
+   - Overall, the time complexity can be expressed as O(n + k log k).
+   - In the worst case, every number is unique (k = n), so the time complexity simplifies to O(n log n).
 
 2. **Space Complexity**:
-   - The space complexity is **O(1)**, if we disregard the space used by the `StringBuilder`, as we are using a fixed amount of extra space (the `StringBuilder` is our output and its size grows proportional to the length of the output rather than the input).
-   - Technically, considering the output space in `StringBuilder`, it can also be considered **O(n)** for the output size, but this is purely for the result returned.
+   - We use additional space for the `Map` and the result array. The space taken by the frequency map is O(k) and the result array is O(n).
+   - Therefore, the overall space complexity is O(n).
 
-Thus, the solution is efficient and adheres to the problem constraints well.
+This gives us the complete solution along with an explanation, visualization steps, and a complexity analysis for the problem "Sort Array by Increasing Frequency".
