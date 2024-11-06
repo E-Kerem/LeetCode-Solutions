@@ -1,15 +1,13 @@
-1. **Dynamic Programming Array Initialization**:
-   - We create an array `dp` of size `n + 1` to store the minimum number of perfect square numbers required for all integers from 0 to `n`.
-   - We initialize each `dp[i]` to `Integer.MAX_VALUE`, except for `dp[0]`, which will remain 0 since 0 can be represented with 0 perfect squares.
+1. **Understanding Full Binary Trees**: A full binary tree (FBT) is a type of binary tree in which every node other than the leaves has two children. For a tree with `n` nodes, `n` must be odd. Therefore, if `n` is even, we can immediately return an empty list since no FBT exists.
 
-2. **Outer Loop for Each Number**:
-   - We iterate through every number from `1` to `n`. For each `i`, we want to determine the minimum number of perfect squares that sum to `i`.
+2. **Base Case**: If `n` equals `1`, it is the simplest FBT consisting of only one node (the root). This case returns a list containing a single `TreeNode`.
 
-3. **Inner Loop for Perfect Squares**:
-   - For each number `i`, we consider each perfect square `j * j` (where `j` starts from `1` and we check `j * j <= i`).
-   - The value `dp[i]` is updated to be the minimum of its current value and `dp[i - j * j] + 1`.
-     - `dp[i - j * j]` gives us the minimum number of perfect squares needed to form the remainder when subtracting `j * j` from `i`.
-     - Adding `1` accounts for including the perfect square `j * j`.
+3. **Recursive Construction**: For each odd number of nodes up to `n`, we iterate through possible sizes for the left subtree. The remaining nodes make up the right subtree. The loop runs with `left_nodes` taking values: `1, 3, 5, ..., n-2`.
 
-4. **Result**:
-   - After filling the `dp` array, `dp[n]` contains the minimum number of perfect squares that sum up to `n`.
+4. **Generating Subtrees**: For each possible split of nodes into left and right subtrees:
+    - Recursively generate all possible left subtrees using `allPossibleFBT(left_nodes)`.
+    - Recursively generate all possible right subtrees using `allPossibleFBT(right_nodes)`.
+    
+5. **Combining Trees**: For each combination of left and right subtree, we create a new tree rooted at a new `TreeNode`, setting the left and right children appropriately, and append this constructed tree to the result list.
+
+6. **Return Result**: Once all combinations for a given `n` have been explored, the function returns the list of possible FBTs.
