@@ -1,11 +1,5 @@
-### Time Complexity:
-- The outer loop runs `n` times.
-- The inner loop will, in the worst case, run up to `√n` times for each `i`, which means the overall time complexity is:
-  \[
-  O(n \sqrt{n})
-  \]
-  
-### Space Complexity:
-- The space complexity is \(O(n)\) due to the `dp` array used to store the intermediate results.
+1. **Time Complexity**: The time complexity for generating all possible full binary trees can be expressed in terms of Catalan numbers. The number of distinct full binary trees with `n` nodes is substantially large, specifically it grows as `O(4^n / n^(3/2))`. As a result, simply considering the structure of the recursion tree, the overall complexity can be approximated to `O(C(n))`, where `C(n)` is the nth Catalan number.
 
-Thus, the algorithm is efficient and leverages dynamic programming to arrive at the solution optimally.
+2. **Space Complexity**: The space complexity is mainly determined by the recursion stack, which can reach a depth of `n` in the worst case. Therefore, the space complexity is `O(n)` due to the depth of the recursion, but the total space used collectively for storing the trees can be significant, depending on `n`.
+
+In conclusion, while constructing all possible full binary trees is computationally intensive, the recursive nature of the problem and the properties of binary trees allow us to effectively navigate through potential solutions.
