@@ -1,5 +1,8 @@
-1. **Time Complexity**: The time complexity for generating all possible full binary trees can be expressed in terms of Catalan numbers. The number of distinct full binary trees with `n` nodes is substantially large, specifically it grows as `O(4^n / n^(3/2))`. As a result, simply considering the structure of the recursion tree, the overall complexity can be approximated to `O(C(n))`, where `C(n)` is the nth Catalan number.
+1. **Time Complexity**:
+   - The time complexity of this solution is **O(n)**, where `n` is the length of the input string `command`. This is because we make a single pass through the string, processing each character in constant time.
 
-2. **Space Complexity**: The space complexity is mainly determined by the recursion stack, which can reach a depth of `n` in the worst case. Therefore, the space complexity is `O(n)` due to the depth of the recursion, but the total space used collectively for storing the trees can be significant, depending on `n`.
+2. **Space Complexity**:
+   - The space complexity is **O(1)**, if we disregard the space used by the `StringBuilder`, as we are using a fixed amount of extra space (the `StringBuilder` is our output and its size grows proportional to the length of the output rather than the input).
+   - Technically, considering the output space in `StringBuilder`, it can also be considered **O(n)** for the output size, but this is purely for the result returned.
 
-In conclusion, while constructing all possible full binary trees is computationally intensive, the recursive nature of the problem and the properties of binary trees allow us to effectively navigate through potential solutions.
+Thus, the solution is efficient and adheres to the problem constraints well.
