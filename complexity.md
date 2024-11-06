@@ -1,5 +1,8 @@
-1. **Time Complexity**: The outer loop runs `n` times and the inner loop runs up to `n` in the worst case, leading to an overall time complexity of \(O(n^2)\).
+1. **Time Complexity**:
+   - **O(N log N)**: Where N is the total number of entries in `keyTime`. The solution performs a sort operation on the swipe times for each user which takes `O(N log N)`. 
+   - The scanning process of each user's swipes after sorting is `O(N)` but is dominated by the sorting term.
 
-2. **Space Complexity**: We use an additional array `dp` of size \(n\) to store the lengths of the increasing subsequences. Therefore, the space complexity is \(O(n)\).
+2. **Space Complexity**:
+   - **O(N)**: The space complexity is due to the storage of the swipe times in the hashmap, requiring space proportional to the number of unique users and their swipe times.
 
-By understanding the steps involved in finding the LIS and the conceptual framework surrounding dynamic programming, you will be well-equipped to tackle problems of this nature in the future.
+In conclusion, the solution efficiently collects, processes, and returns users who have raised alerts based on their key-card usage patterns.
