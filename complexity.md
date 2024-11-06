@@ -1,13 +1,5 @@
-### Time Complexity
-- The time complexity is \(O(m \cdot n \cdot k)\), where:
-  - \(m\) is the number of rows in the grid.
-  - \(n\) is the number of columns in the grid.
-  - \(k\) is the divisor.
+1. **Time Complexity**: The outer loop runs `n` times and the inner loop runs up to `n` in the worst case, leading to an overall time complexity of \(O(n^2)\).
 
-This is due to the three nested loops:
-- The first two loops go through each cell of the grid; the innermost loop iterates through all possible modulo states.
+2. **Space Complexity**: We use an additional array `dp` of size \(n\) to store the lengths of the increasing subsequences. Therefore, the space complexity is \(O(n)\).
 
-### Space Complexity
-- The space complexity is also \(O(m \cdot n \cdot k)\) due to the 3D dynamic programming table used to store path counts for each cell and its corresponding modulo state.
-
-Overall, this dynamic programming approach efficiently counts the number of valid paths while respecting computational limits inherent in the problem.
+By understanding the steps involved in finding the LIS and the conceptual framework surrounding dynamic programming, you will be well-equipped to tackle problems of this nature in the future.
