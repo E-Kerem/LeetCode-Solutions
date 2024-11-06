@@ -1,9 +1,20 @@
-1. **Initialization**: We start by initializing a set called `has_incoming_edges`. This will help us keep track of which vertices have incoming edges.
+### Step-by-Step Solution
 
-2. **Iterate through edges**: We loop through each edge (u, v) in the `edges` list. For every edge, we note that the vertex `v` has an incoming edge from vertex `u`, so we add `v` to our `has_incoming_edges` set.
+1. **Initialization**:
+   - We import `defaultdict` from the `collections` module.
+   - We determine the dimensions `m` and `n` of the grid.
+   - A 3D list `dp` is created. `dp[i][j][mod]` will hold the number of paths leading to cell `(i,j)` with a sum that modulo `k` equals `mod`.
 
-3. **Identify vertices without incoming edges**: Next, we need to identify vertices that do not belong to the `has_incoming_edges` set. These vertices are essential because they do not require any other vertex to reach them and can reach all other nodes.
+2. **Base Case**:
+   - The starting point is initialized. The number of paths to the first cell `(0,0)` with a sum that modulo `k` equals `grid[0][0] % k` is set to `1`.
 
-4. **Collect results**: We iterate over all vertices from `0` to `n-1`, checking if each vertex is in the `has_incoming_edges` set. If a vertex is not present, we append it to the result list.
+3. **Dynamic Programming Iteration**:
+   - We iterate through each cell in the grid using two nested loops (for rows `i` and columns `j`).
+   - For each cell `(i,j)`, we check every possible modulo value (`mod`) from `0` to `k-1`.
+   - If paths exist to this cell with a certain sum modulo `k`, we attempt to extend these paths:
+     - **Downward Move**: If not at the last row, move to cell `(i+1, j)` and update the new modulo value.
+     - **Rightward Move**: If not at the last column, move to cell `(i, j+1)` and update its modulo value likewise.
 
-5. **Return result**: Finally, we return the list of vertices that do not have incoming edges.
+4. **Final Count**:
+   - After finishing all iterations, we sum up all the paths that reach the bottom-right corner `(m-1, n-1)` whose sum's modulo `k` equals `0`.
+   - We return this value modulo `10^9 + 7` to handle large numbers.
