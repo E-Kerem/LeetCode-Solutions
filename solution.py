@@ -1,14 +1,29 @@
-def maxSubsetSize(nums):
-    # Sort the input list
-    nums.sort()
+# Definition for a binary tree node.
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+def allPossibleFBT(n):
+    if n % 2 == 0:  # A full binary tree must have an odd number of nodes
+        return []
     
-    max_size = 0
-    current_sum = 0
+    # Base case for one node
+    if n == 1:
+        return [TreeNode(0)]
     
-    for num in nums:
-        # Check if adding the current number doesn't exceed the limit of 1
-        if current_sum + num <= 1:
-            current_sum += num
-            max_size += 1
-            
-    return max_size
+    result = []
+    for left_nodes in range(1, n, 2):  # left nodes can be 1, 3, ..., n-2
+        right_nodes = n - 1 - left_nodes # Remaining nodes for the right subtree
+        left_trees = allPossibleFBT(left_nodes)
+        right_trees = allPossibleFBT(right_nodes)
+        
+        for left in left_trees:
+            for right in right_trees:
+                root = TreeNode(0)
+                root.left = left
+                root.right = right
+                result.append(root)
+    
+    return result
