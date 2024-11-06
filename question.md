@@ -1,5 +1,5 @@
-# All Possible Full Binary Trees
+# Goal Parser Interpretation
 
-**Difficulty**: Medium
+**Difficulty**: Easy
 
 **Description**: Description not available.
