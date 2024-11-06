@@ -1,11 +1,13 @@
-1. **Time Complexity**:
-   - Counting frequencies takes O(n), where n is the length of the input array `nums`.
-   - Sorting the frequency array takes O(k log k), where k is the number of unique elements in `nums`.
-   - Overall, the time complexity can be expressed as O(n + k log k).
-   - In the worst case, every number is unique (k = n), so the time complexity simplifies to O(n log n).
+### Time Complexity
+- The time complexity is \(O(m \cdot n \cdot k)\), where:
+  - \(m\) is the number of rows in the grid.
+  - \(n\) is the number of columns in the grid.
+  - \(k\) is the divisor.
 
-2. **Space Complexity**:
-   - We use additional space for the `Map` and the result array. The space taken by the frequency map is O(k) and the result array is O(n).
-   - Therefore, the overall space complexity is O(n).
+This is due to the three nested loops:
+- The first two loops go through each cell of the grid; the innermost loop iterates through all possible modulo states.
 
-This gives us the complete solution along with an explanation, visualization steps, and a complexity analysis for the problem "Sort Array by Increasing Frequency".
+### Space Complexity
+- The space complexity is also \(O(m \cdot n \cdot k)\) due to the 3D dynamic programming table used to store path counts for each cell and its corresponding modulo state.
+
+Overall, this dynamic programming approach efficiently counts the number of valid paths while respecting computational limits inherent in the problem.
