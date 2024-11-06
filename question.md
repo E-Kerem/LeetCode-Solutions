@@ -1,4 +1,4 @@
-# Paths in Matrix Whose Sum Is Divisible by K
+# Minimum Number of Increasing Subsequence to Be Removed
 
 **Difficulty**: Hard
 
