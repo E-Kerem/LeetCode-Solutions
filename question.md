@@ -1,4 +1,4 @@
-# Goal Parser Interpretation
+# Sort Array by Increasing Frequency
 
 **Difficulty**: Easy
 
