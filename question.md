@@ -1,4 +1,4 @@
-# Count Number of Distinct Integers After Reverse Operations
+# Find the Maximum Number of Elements in Subset
 
 **Difficulty**: Medium
 
