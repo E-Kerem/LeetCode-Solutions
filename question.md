@@ -1,5 +1,5 @@
-# Minimum Number of Vertices to Reach All Nodes
+# Paths in Matrix Whose Sum Is Divisible by K
 
-**Difficulty**: Medium
+**Difficulty**: Hard
 
 **Description**: Description not available.
